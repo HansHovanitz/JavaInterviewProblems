@@ -25,31 +25,6 @@ public class AddressSort {
 				System.out.println("[" + r.get(i).start + "," + r.get(i).end + "]");
 			}
 		}
-		
-		
-		//String input = "[12345,23456] [34567,45678] [56789,67890]";
-		//String[] tokens = input.replaceAll("\\[|\\]","").split(" ");
-
-		//ArrayList<String> newString = new ArrayList<String>();
-		//ArrayList<Interval> x = new ArrayList<Interval>();
-		
-
-	/*	
-		
-		for (int i = 0; i < tokens.length; i++) {
-			String input2 = tokens[i];
-			String[] tokens2 = input2.split(",");
-			int start = Integer.parseInt(tokens2[0]);
-			int end = Integer.parseInt(tokens2[1]);	
-			Interval interval = new Interval(start, end);
-			x.add(interval);
-			//System.out.println(tokens2[0]);
-			//System.out.println(tokens2[1]);
-		}
-	*/	
-		//for (Interval i : x) {
-		//	System.out.println(i.start + " " + i.end);
-		//}	
 	}
 	
     public static ArrayList<Interval> merge(ArrayList<Interval> intervals) {
@@ -87,8 +62,6 @@ class IntervalComparator implements Comparator<Object> {
     public int compare(Object o1, Object o2) {
         Interval i1 = (Interval) o1;
         Interval i2 = (Interval) o2;
-        //System.out.println(i1.start);
-        //System.out.println(i1.start - i2.start);
         return i1.start - i2.start;
     }
 }
