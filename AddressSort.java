@@ -9,6 +9,7 @@ public class AddressSort {
 		
 		if (args.length > 0)
 		{
+			//Create new interval objects with the command line input. 
 			for (int i = 0; i < args.length; i++)
 			{
 				String intervalString = args[i];
@@ -19,8 +20,10 @@ public class AddressSort {
 				x.add(interval);
 			}	
 			
+			//Merge overlapping intervals together and store into new ArrayList. 
 			ArrayList<Interval> r = merge(x);
 			
+			//Print interval output in zipcode range format. 
 			for (int i = 0; i < r.size(); i++) {
 				System.out.println("[" + r.get(i).start + "," + r.get(i).end + "]");
 			}
@@ -34,12 +37,14 @@ public class AddressSort {
         if (intervals.size() == 1)
             return intervals;
 
+        //Sort the intervals by the smallest start values. 
         Collections.sort(intervals, new IntervalComparator());
 
         Interval first = intervals.get(0);
         int start = first.start;
         int end = first.end;
 
+        //List to store the new intervals. 
         ArrayList<Interval> result = new ArrayList<Interval>();
 
         for (int i = 1; i < intervals.size(); i++) {
