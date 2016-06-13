@@ -11,38 +11,38 @@ import java.io.*;
 * Output: 1-3, 4-9 
 **********************************************************************/
 public class AddressSort {
-	public static void main(String [] args) {
+    public static void main(String [] args) {
 		
-		ArrayList<Interval> addressInterval = new ArrayList<Interval>();
+	ArrayList<Interval> addressInterval = new ArrayList<Interval>();
 		
-		if (args.length > 0)
+	if (args.length > 0)
+	{
+		//Create new interval objects with the command line input. 
+		for (int i = 0; i < args.length; i++)
 		{
-			//Create new interval objects with the command line input. 
-			for (int i = 0; i < args.length; i++)
-			{
-				String intervalString = args[i];
-				String [] tokens = intervalString.replaceAll("\\[|\\]","").split(",");
-				int start = Integer.parseInt(tokens[0]);
-				int end = Integer.parseInt(tokens[1]);
-				Interval interval = new Interval(start, end);
-				addressInterval.add(interval);
-			}	
+			String intervalString = args[i];
+			String [] tokens = intervalString.replaceAll("\\[|\\]","").split(",");
+			int start = Integer.parseInt(tokens[0]);
+			int end = Integer.parseInt(tokens[1]);			
+			Interval interval = new Interval(start, end);
+			addressInterval.add(interval);
+		}	
 			
-			//Merge overlapping intervals together and store into new ArrayList. 
-			ArrayList<Interval> mergedAddress = merge(addressInterval);
+		//Merge overlapping intervals together and store into new ArrayList. 
+		ArrayList<Interval> mergedAddress = merge(addressInterval);
 			
-			//Print interval output in zipcode range format. 
-			for (int i = 0; i < mergedAddress.size(); i++) {
-				System.out.println("[" + mergedAddress.get(i).start + "," + mergedAddress.get(i).end + "]");
-			}
+		//Print interval output in zipcode range format. 
+		for (int i = 0; i < mergedAddress.size(); i++) {
+			System.out.println("[" + mergedAddress.get(i).start + "," + mergedAddress.get(i).end + "]");
 		}
 	}
+}
 	
-	/****************************************
-	* Method to merge intervals 
-	* @param_merge Unmerged array
-	* @return Merged array
-	*****************************************/
+    /****************************************
+    * Method to merge intervals 
+    * @param_merge Unmerged array
+    * @return Merged array
+    *****************************************/
     public static ArrayList<Interval> merge(ArrayList<Interval> intervals) {
 
     	//Check if there are 0 or 1 elements.
